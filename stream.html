@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race Stream</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-image: url('https://media.formula1.com/image/upload/content/dam/fom-website/manual/Misc/2022manual/LasVegas/%C2%A9%20Artistic%20impressions%20created%20by%20Tilke%20Design%20and%20Architects%2C%20for%20illustrative%20purposes%20only%20and%20are%20subject%20to%20change%20(1).jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .top-bar {
+            background-color: black; /* Solid black color */
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 10px 20px; /* Reduced padding further */
+            font-size: 24px;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+        }
+
+        .top-bar h1 {
+            margin: 0;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 48px; /* Made the text larger */
+        }
+
+        .formula-text {
+            position: absolute;
+            top: 100px; /* Adjusted to prevent overlap with the top bar */
+            left: 20px;
+            font-size: 80px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            color: white;
+            font-size: 12px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h1>Race Stream</h1>
+    </div>
+
+    <div class="formula-text">
+        FORMULA 1
+    </div>
+
+    <div class="footer">
+        © 2024 Leviousnes CM. TM L0FT Corporation.
+    </div>
+
+</body>
+</html>

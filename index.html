@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race Stream</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(to bottom, black, transparent),
+                        url('https://img.asmedia.epimg.net/resizer/v2/AXE742KPLCMHBAXJDRH4ST4KBA.jpg?auth=a07dec74581f542f81aeb9bd3ebbcafb8faeb310ff83b2be17a50d15491aa548&width=1472&height=828&smart=true') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .top-bar {
+            background-color: rgba(0, 0, 0, 1); /* Solid black background */
+            color: white;
+            padding: 10px 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .top-bar h1 {
+            margin: 0;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 48px; /* Increased font size */
+        }
+
+        .formula-text {
+            position: relative;
+            left: 20px;
+            top: 10px;
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .formula-description {
+            position: relative;
+            left: 20px;
+            top: 10px;
+            font-size: 18px;
+            color: white;
+            max-width: 50%;
+            line-height: 1.6;
+        }
+
+        .button-container {
+            margin-top: 50px;
+            text-align: center;
+            width: 100%;
+            padding-bottom: 50px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 30px;
+            background-color: red;
+            color: white;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: darkred;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .fullscreen-loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .fullscreen-loading.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        .fullscreen-loading .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Brush Script MT', cursive;
+            font-size: 120px; /* Increased font size */
+            font-weight: bold;
+            color: white;
+        }
+
+        .loading-circle {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid red;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translateX(-50%) rotate(0deg); }
+            100% { transform: translateX(-50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <h1>Race Stream</h1>
+    </div>
+
+    <div class="formula-text">
+        FORMULA 1
+    </div>
+
+    <div class="formula-description">
+        Formula 1 is the premier international single-seater motorsport championship, showcasing the worlds most advanced racing cars and elite drivers. Known for its high-speed races on iconic tracks across the globe, Formula 1 combines cutting-edge technology, precision engineering, and immense strategic planning. Teams such as Ferrari, Mercedes, and Red Bull compete in a series of races called Grands Prix, aiming to secure both the Drivers' and Constructors' Championships.
+    </div>
+
+    <div class="button-container">
+        <button id="watchButton">WATCH</button>
+    </div>
+
+    <div class="footer">
+        © 2024 Leviousnes CM. TM L0FT Corporation.
+    </div>
+
+    <div class="fullscreen-loading" id="fullscreenLoading">
+        <div class="title">Race Stream</div>
+        <div class="loading-circle"></div>
+    </div>
+
+    <script>
+        document.getElementById('watchButton').addEventListener('click', function() {
+            const loadingElement = document.getElementById('fullscreenLoading');
+            
+            // Show the loading screen with fade-in effect
+            loadingElement.classList.add('visible');
+
+            // Wait for 3 seconds before redirecting
+            setTimeout(() => {
+                window.location.href = "https://www.example.com"; // Replace with the target URL
+            }, 3000); // 3000ms = 3 seconds
+        });
+    </script>
+
+</body>
+</html>
