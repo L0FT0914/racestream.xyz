@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Race Stream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"> <!-- Bold Roboto -->
     <style>
         body {
             margin: 0;
@@ -13,20 +14,15 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
             font-family: Arial, sans-serif;
         }
 
         .top-bar {
-            background-color: black; /* Solid black color */
+            background-color: black;
             color: white;
             width: 100%;
             text-align: center;
-            padding: 10px 20px; /* Reduced padding further */
+            padding: 10px 20px;
             font-size: 24px;
             position: fixed;
             top: 0;
@@ -36,16 +32,18 @@
         .top-bar h1 {
             margin: 0;
             font-family: 'Brush Script MT', cursive;
-            font-size: 48px; /* Made the text larger */
+            font-size: 48px;
         }
 
         .formula-text {
             position: absolute;
-            top: 100px; /* Adjusted to prevent overlap with the top bar */
+            top: 100px;
             left: 20px;
             font-size: 80px;
             font-weight: bold;
             margin: 0;
+            z-index: 1;
+            color: white;
         }
 
         .footer {
@@ -54,12 +52,62 @@
             left: 20px;
             color: white;
             font-size: 12px;
-            text-align: left;
+            z-index: 1;
+        }
+
+        /* Container for iframe */
+        .iframe-container {
+            position: relative;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; /* Size of iframe */
+            height: 400px; /* Size of iframe */
+            display: inline-block;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        /* Image on the right side of iframe (adjust width here) */
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            right: -310px; /* Image moved further to the right */
+            width: 300px; /* Increased width */
+            height: 400px; /* Match iframe height */
+            background-image: url('https://storage.googleapis.com/pod_public/1300/212340.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        #clock {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 36px;
+            color: white;
+            background-color: #003366;
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
 
+    <!-- Overlay elements -->
     <div class="top-bar">
         <h1>Race Stream</h1>
     </div>
@@ -68,9 +116,42 @@
         FORMULA 1
     </div>
 
+    <!-- Container for the iframe and clock -->
+    <div class="iframe-container">
+        <!-- Embed the F1 stream -->
+        <iframe frameborder="0" 
+            src="https://f1streams.jokerguide.com/" 
+            allowfullscreen 
+            scrolling="no" 
+            allowtransparency>
+        </iframe>
+
+        <!-- Image overlay outside iframe (to the right) -->
+        <div class="image-overlay"></div>
+
+        <!-- Current Time display -->
+        <div id="clock"></div>
+    </div>
+
     <div class="footer">
         © 2024 Leviousnes CM. TM L0FT Corporation.
     </div>
+
+    <script>
+        function updateClock() {
+            var currentTime = new Date();
+            var hours = currentTime.getUTCHours();
+            var minutes = currentTime.getUTCMinutes();
+            var seconds = currentTime.getUTCSeconds();
+            hours = (hours < 10 ? "0" : "") + hours;
+            minutes = (minutes < 10 ? "0" : "") + minutes;
+            seconds = (seconds < 10 ? "0" : "") + seconds;
+            var timeString = hours + ":" + minutes + ":" + seconds;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        setInterval(updateClock, 1000);
+    </script>
 
 </body>
 </html>
